@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./files/image.png" />
+    <script
+      src="https://kit.fontawesome.com/b238aff931.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-image: radial-gradient(
+          circle farthest-corner at -5.6% -6.8%,
+          rgba(103, 49, 145, 1) 37.3%,
+          rgba(50, 0, 129, 1) 73.5%
+        );
+      }
+
+      .main-frame {
+        background: rgba(128, 128, 128, 0.306);
+        border-radius: 16px;
+        box-shadow: 0 4px 35px rgba(0, 0, 0, 0.484);
+        backdrop-filter: blur(6.4px);
+        -webkit-backdrop-filter: blur(6.4px);
+        border: 3px solid rgba(0, 0, 0, 0.037);
+        width: 1080px;
+        margin: 60px auto;
+      }
+
+      .main-title {
+        color: wheat;
+        font: 40px Courier;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .search {
+        padding: 10px;
+        width: 500px;
+        margin: auto;
+        position: relative;
+      }
+
+      .inpt {
+        width: 370px;
+        padding: 14px 120px 14px 9px;
+        text-align: center;
+        border-radius: 30px;
+        border: 0;
+        background-color: #ffffff;
+        font: normal 30px Arial;
+        outline: 0;
+        box-shadow: 0 0 5px rgba(254, 116, 105, 0.6);
+      }
+
+      .btn {
+        background-color: #fe7469;
+        border-radius: 0px 30px 30px 0px;
+        padding: 20px 40px 20px 35px;
+        color: white;
+        font: 20px Arial;
+        position: absolute;
+        transform: translateX(-110px);
+        border: 0;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        opacity: 150%;
+        background-color: #e86960;
+      }
+
+      .lst {
+        color: white;
+        font-size: 25px;
+        line-height: 50px;
+        padding: 0;
+      }
+
+      .checked .task-text {
+        color: rgb(209, 209, 209);
+        text-decoration: line-through;
+      }
+
+      .cm {
+        color: #e86960;
+        padding-right: 10px;
+      }
+
+      li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      li i.delete {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-frame">
+      <h1 class="main-title">Todo List</h1>
+      <div class="search">
+        <input type="text" id="task-js" class="inpt" />
+        <button class="btn" onclick="addTask()">Add</button>
+        <div class="task" id="list-js">
+          <ul class="lst" id="lst-js"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function addTask() {
+        const inpt = document.getElementById("task-js");
+        const mytask = inpt.value.trim();
+        const list = document.getElementById("lst-js");
+
+        if (mytask === "") return;
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span class="task-text">
+            <i class="fa-regular fa-circle cm"></i>${mytask}
+          </span>
+          <i class="fa-solid fa-xmark delete"></i>
+        `;
+
+        list.appendChild(document.createElement("hr"));
+        list.appendChild(li);
+
+        inpt.value = "";
+
+        const spanam = li.querySelector(".task-text");
+        const iconam = li.querySelector(".fa-circle, .fa-circle-check");
+        spanam.addEventListener("click", () => {
+          li.classList.toggle("checked");
+          if (li.classList.contains("checked")) {
+            iconam.classList.replace("fa-circle", "fa-circle-check");
+            iconam.classList.replace("fa-regular", "fa-solid");
+          } else {
+            iconam.classList.replace("fa-circle-check", "fa-circle");
+            iconam.classList.replace("fa-solid", "fa-regular");
+          }
+        });
+        const deleteIcon = li.querySelector(".delete");
+        deleteIcon.addEventListener("click", (e) => {
+          e.stopPropagation();
+          li.previousElementSibling?.remove();
+          li.remove();
+        });
+      }
+    </script>
+  </body>
+</html>
