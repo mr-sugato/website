@@ -15,33 +15,40 @@
       crossorigin="anonymous"
     ></script>
     <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
       body {
-        background-image: radial-gradient(
-          circle farthest-corner at -5.6% -6.8%,
+        background: linear-gradient(
           rgba(103, 49, 145, 1) 37.3%,
           rgba(50, 0, 129, 1) 73.5%
         );
+        background-attachment: fixed;
       }
 
+
       .main-frame {
-        background: rgba(128, 128, 128, 0.306);
+        background: rgba(143, 128, 144, 0.192);
         border-radius: 16px;
-        box-shadow: 0 4px 35px rgba(0, 0, 0, 0.484);
+        box-shadow: 0 4px 35px rgba(0, 0, 0, 0.694);
         backdrop-filter: blur(6.4px);
         -webkit-backdrop-filter: blur(6.4px);
-        border: 3px solid rgba(0, 0, 0, 0.037);
+        border: 3px solid rgba(0, 0, 0, 0.18);
         width: 1080px;
         margin: 60px auto;
       }
-
+      
       .main-title {
         color: wheat;
         font: 40px Courier;
         font-weight: bold;
         text-align: center;
       }
-
+      
       .search {
+        min-height: 500px;
         padding: 10px;
         width: 500px;
         margin: auto;
