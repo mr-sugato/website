@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login | Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./files/image.png" />
+    <script
+      src="https://kit.fontawesome.com/b238aff931.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        background: linear-gradient(
+          rgba(103, 49, 145, 1) 37.3%,
+          rgba(50, 0, 129, 1) 73.5%
+        );
+        background-attachment: fixed;
+        font-family: "Fjalla One", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .navBala {
+        background-color: #2b2b2b;
+        height: 60px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .navBala ul {
+        list-style: none;
+        margin: 0;
+        padding: 0 20px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 60px;
+      }
+
+      .navBala ul li {
+        margin-left: 20px;
+      }
+
+      .navBala ul li a {
+        color: #fff;
+        font-size: 20px;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .navBala ul li a:hover {
+        background-color: #444;
+      }
+
+      .sandoghForm {
+        background: rgba(143, 128, 144, 0.192);
+        border-radius: 16px;
+        box-shadow: 0 4px 35px rgba(0, 0, 0, 0.694);
+        backdrop-filter: blur(6.4px);
+        -webkit-backdrop-filter: blur(6.4px);
+        border: 3px solid rgba(0, 0, 0, 0.18);
+        padding: 50px;
+        width: 400px;
+        text-align: center;
+        margin: 80px auto;
+        flex-grow: 1;
+      }
+
+      .onvanForm {
+        color: wheat;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      .voroodi {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        text-align: center;
+        box-shadow: 0 0 5px rgba(254, 116, 105, 0.6);
+      }
+
+      .dokmeVorod {
+        width: 60%;
+        transform: translateX(10px);
+        background-color: #fe7469;
+        color: #fff;
+        border: none;
+        padding: 15px;
+        border-radius: 30px;
+        font-size: 20px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s ease;
+      }
+
+      .dokmeVorod:hover {
+        opacity: 1.5;
+        background-color: #e86960;
+      }
+
+      .linkGheyreAsli {
+        color: #fff;
+        margin-top: 20px;
+        display: block;
+        font-size: 16px;
+      }
+
+      .linkGheyreAsli a {
+        color: #fe7469;
+        text-decoration: none;
+      }
+
+      .linkGheyreAsli a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: auto;
+        font-size: 16px;
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      footer a {
+        color: #fe7469;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer .contact {
+        margin-bottom: 8px;
+      }
+
+      footer .bio {
+        font-size: 14px;
+        color: #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navBala">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="sandoghForm">
+      <h1 class="onvanForm">Login</h1>
+      <form onsubmit="return modiriyatVorod(event)">
+        <input
+          type="text"
+          id="namKarbar"
+          class="voroodi"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          id="ramzKarbar"
+          class="voroodi"
+          placeholder="Password"
+          required
+        />
+        <button class="dokmeVorod" type="submit">Login</button>
+      </form>
+      <span class="linkGheyreAsli">
+        Don’t have an account? <a href="#">Sign up</a>
+      </span>
+    </div>
+
+    <footer>
+      <div class="contact">
+        <i class="fa-regular fa-envelope"></i>
+        <a href="mailto:imdorcat@gmail.com">imdorcat@gmail.com</a>
+      </div>
+      <div class="bio">
+        <p><a href="./about.html">About Me</a></p>
+      </div>
+    </footer>
+
+    <script>
+      function modiriyatVorod(event) {
+        event.preventDefault();
+        const usernameVal = document.getElementById("namKarbar").value.trim();
+        const passwordVal = document.getElementById("ramzKarbar").value.trim();
+
+        if (usernameVal === "Aria" && passwordVal === "Nima") {
+          alert("yayyyyyyy!");
+          window.location.href = "./index.html";
+        } else {
+          alert("Get the fuck outta here");
+        }
+      }
+    </script>
+  </body>
+</html>
